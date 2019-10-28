@@ -65,19 +65,19 @@ function NewEventForm() {
             <Form.Row>
               <Form.Group as={Col} controlId="formEventStartDate">
                 <Form.Label>Event Date</Form.Label>
-                <Form.Control name="start_date" type="date" placeholder="Start date" value={state.start_date} onChange={updateField} />
+                <Form.Control name="start_date" type="date" placeholder="YYYY-MM-DD" value={state.start_date} onChange={updateField} />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formEventStartTime">
                 <Form.Label>Start Time</Form.Label>
-                <Form.Control name="start_time" type="time" placeholder="Start time" value={state.start_time} onChange={updateField} />
+                <Form.Control name="start_time" type="time" placeholder="HH:MM" value={state.start_time} onChange={updateField} />
               </Form.Group>
             </Form.Row>
 
             <Form.Row>
               <Form.Group as={Col} controlId="formEventEndDate">
                 <Form.Label>Event Date</Form.Label>
-                <Form.Control name="end_date" type="date" placeholder="End date" value={state.end_date} onChange={updateField} />
+                <Form.Control name="end_date" type="date" placeholder="YYYY-MM-DD" value={state.end_date} onChange={updateField} />
                 <Form.Text className="text-muted">
                   If multi-day event
                 </Form.Text>
@@ -85,7 +85,7 @@ function NewEventForm() {
 
               <Form.Group as={Col} controlId="formEventEndTime">
                 <Form.Label>End Time</Form.Label>
-                <Form.Control name="end_time" type="time" placeholder="End time" value={state.end_time} onChange={updateField} />
+                <Form.Control name="end_time" type="time" placeholder="HH:MM" value={state.end_time} onChange={updateField} />
               </Form.Group>
             </Form.Row>
 
