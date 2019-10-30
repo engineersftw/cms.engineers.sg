@@ -7,11 +7,13 @@ function AuthButton({ auth }) {
 
   return (
     <Form inline>
-      {
-        auth.isAuthenticated ? (
-          <Button variant="outline-success" size="sm" onClick={() => {
-            auth.logout(() => history.push("/"))
-          }}>Logout</Button>
+      {auth.isAuthenticated ? (
+          <>
+            <span className="mr-2">Hi, {auth.userProfile.firstName}</span>{" "}
+            <Button variant="outline-success" size="sm" onClick={() => {
+              auth.logout(() => history.push("/"))
+            }}>Logout</Button>
+          </>
         ) : (
           <Link to="/login" className="btn btn-outline-primary btn-sm">Login</Link>
         )

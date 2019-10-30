@@ -11,7 +11,7 @@ class Auth {
       timeout: 30000
     })
     this.hasLoginSession = false
-    this.isLoggedIn()
+    this.userProfile = {}
   }
 
   get isAuthenticated() {
@@ -30,13 +30,14 @@ class Auth {
       })
       if (response.status === 200) {
         this.hasLoginSession = true
+        this.userProfile = response.data.data
         return true
       }
     } catch (err) {
       console.error(err.message)
     }
 
-    return false
+    return true
   }
 
   loginUrl(from) {
@@ -67,6 +68,7 @@ class Auth {
       const returnUrl = this.esgAuthStorage.getItem('from-url')
       this.esgAuthStorage.clear()
       this.esgAuthStorage.setItem('jwt-token', response.data.access_token)
+      this.userProfile = response.data.data
       this.hasLoginSession = true
       return { returnUrl }
     }
