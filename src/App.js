@@ -7,6 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom"
+import { ApolloProvider } from '@apollo/react-hooks'
 
 import logo from './engineerssg-logo-text.svg';
 import PrivateRoute from './helpers/private_route'
@@ -18,7 +19,10 @@ import NewEventForm from './pages/new_event_form'
 import AuthCallback from './pages/auth_callback'
 
 import Auth from './services/auth'
+import Events from './services/events'
+
 const authService = new Auth()
+const events = new Events()
 
 function App() {
   return (
@@ -50,7 +54,9 @@ function App() {
               <AuthCallback auth={authService} />
             </Route>
             <PrivateRoute auth={authService} path="/events/new">
-              <NewEventForm />
+              <ApolloProvider client={events.client}>
+                <NewEventForm />
+              </ApolloProvider>
             </PrivateRoute>
           </Switch>
         </Container>
