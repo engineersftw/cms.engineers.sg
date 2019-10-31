@@ -10,16 +10,12 @@ class Auth {
       baseURL: this.config.authServer,
       timeout: 30000
     })
-    this.hasLoginSession = false
+    this.isAuthenticated = false
     this.userProfile = {}
   }
 
-  get isAuthenticated() {
-    return this.hasLoginSession
-  }
-
   async isLoggedIn() {
-    if (this.hasLoginSession) { return true }
+    if (this.isAuthenticated) { return true }
     if (!this.esgAuthStorage.getItem('jwt-token')) { return false }
 
     try {
@@ -29,7 +25,7 @@ class Auth {
         }
       })
       if (response.status === 200) {
-        this.hasLoginSession = true
+        this.isAuthenticated = true
         this.userProfile = response.data.data
         return true
       }
@@ -69,7 +65,7 @@ class Auth {
       this.esgAuthStorage.clear()
       this.esgAuthStorage.setItem('jwt-token', response.data.access_token)
       this.userProfile = response.data.data
-      this.hasLoginSession = true
+      this.isAuthenticated = true
       return { returnUrl }
     }
 
@@ -77,7 +73,7 @@ class Auth {
   }
 
   logout(cb) {
-    this.hasLoginSession = false
+    this.isAuthenticated = false
     this.esgAuthStorage.clear()
     cb()
   }

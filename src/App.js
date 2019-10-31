@@ -26,9 +26,9 @@ function App() {
       <div className="App">
         <Container>
           <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">
+            <Link to="/" className="navbar-brand">
               <img src={logo} height="40" alt="" />
-            </Navbar.Brand>
+            </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
